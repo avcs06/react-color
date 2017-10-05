@@ -1,11 +1,11 @@
 {
-  "name": "react-color",
+  "name": "react-color-tmp-v3",
   "version": "2.13.9-0",
   "description": "A Collection of Color Pickers from Sketch, Photoshop, Chrome & more",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/casesandberg/react-color.git"
+    "url": "git+https://github.com/vishalraj82/react-color.git"
   },
   "author": "case <case@casesandberg.com>",
   "license": "MIT",
