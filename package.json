@@ -1,6 +1,6 @@
 {
   "name": "@one.com/react-color-patch",
-  "version": "2.13.9-1",
+  "version": "2.13.9",
   "description": "A Collection of Color Pickers from Sketch, Photoshop, Chrome & more",
   "main": "lib/index.js",
   "repository": {
