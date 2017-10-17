@@ -15,6 +15,20 @@ export class ChromeFields extends React.Component {
     this.setState({ view: 'hex' })
   }
 
+  toggleViews = () => {
+    if (this.state.view === 'hex') {
+      this.setState({ view: 'rgb' })
+    } else if (this.state.view === 'rgb') {
+      this.setState({ view: 'hsl' })
+    } else if (this.state.view === 'hsl') {
+      if (this.props.hsl.a === 1) {
+        this.setState({ view: 'hex' })
+      } else {
+        this.setState({ view: 'rgb' })
+      }
+    }
+  }
+
   handleChange = (data, e) => {
     if (data.hex) {
       color.isValidHex(data.hex) && this.props.onChange({
@@ -222,6 +236,28 @@ export class ChromeFields extends React.Component {
     return (
       <div style={ styles.wrap } className="flexbox-fix">
         { fields }
+        <div style={ styles.toggle }>
+          <div style={ styles.icon } onClick={ this.toggleViews } ref={ icon => this.icon = icon }>
+            <svg
+              style={ styles.svg }
+              viewBox="0 0 24 24"
+              onMouseOver={ this.showHighlight }
+              onMouseEnter={ this.showHighlight }
+              onMouseOut={ this.hideHighlight }
+            >
+              <path
+                ref={ iconUp => this.iconUp = iconUp }
+                fill="#333"
+                d="M12,5.83L15.17,9L16.58,7.59L12,3L7.41,7.59L8.83,9L12,5.83Z"
+              />
+              <path
+                ref={ iconDown => this.iconDown = iconDown }
+                fill="#333"
+                d="M12,18.17L8.83,15L7.42,16.41L12,21L16.59,16.41L15.17,15Z"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
     )
   }
