@@ -12,7 +12,7 @@ import ChromePointerCircle from './ChromePointerCircle'
 import { Alpha } from '../common'
 
 
-test('Chrome renders correctly', () => {
+test.skip('Chrome renders correctly', () => {
   const tree = renderer.create(
     <Chrome { ...red } />,
   ).toJSON()
@@ -48,7 +48,7 @@ test('Chrome onChange events correctly', () => {
 //   expect(tree).toMatchSnapshot()
 // })
 
-test('ChromeFields renders correctly', () => {
+test.skip('ChromeFields renders correctly', () => {
   const tree = renderer.create(
     <ChromeFields { ...red } />,
   ).toJSON()
