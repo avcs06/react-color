@@ -9,7 +9,7 @@ import Chrome from './Chrome'
 import ChromeFields from './ChromeFields'
 import ChromePointer from './ChromePointer'
 import ChromePointerCircle from './ChromePointerCircle'
-import { Alpha } from '../common'
+import { Alpha, EditableInput } from '../common'
 
 
 test.skip('Chrome renders correctly', () => {
@@ -39,6 +39,24 @@ test('Chrome onChange events correctly', () => {
   // TODO: check the Hue component
   // TODO: check the ChromeFields
   // TODO: check Saturation
+})
+
+test('Chrome onFocus, onBlur event callbacks are called correctly', () => {
+  const focusSpy = jest.fn()
+  const blurSpy = jest.fn()
+  const tree = mount(
+    <Chrome {...red} onFocus={focusSpy} onBlur={blurSpy} />,
+  )
+  expect(focusSpy).toHaveBeenCalledTimes(0)
+  expect(blurSpy).toHaveBeenCalledTimes(0)
+
+  // check the Alpha component
+  const chromeFields = tree.find(EditableInput)
+  chromeFields.at(0).childAt(0).simulate('focus')
+  expect(focusSpy).toHaveBeenCalledTimes(1)
+
+  chromeFields.at(0).childAt(0).simulate('blur')
+  expect(blurSpy).toHaveBeenCalledTimes(1)
 })
 
 // test('Chrome renders on server correctly', () => {

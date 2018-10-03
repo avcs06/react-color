@@ -29,6 +29,14 @@ export class ChromeFields extends React.Component {
     }
   }
 
+  handleFocus = (e) => {
+    this.props.onFocus && this.props.onFocus(e)
+  }
+
+  handleBlur = (e) => {
+    this.props.onBlur && this.props.onBlur(e)
+  }
+
   handleChange = (data, e) => {
     if (data.hex) {
       color.isValidHex(data.hex) && this.props.onChange({
@@ -156,6 +164,8 @@ export class ChromeFields extends React.Component {
             style={{ input: styles.input, label: styles.label }}
             label="hex" value={ this.props.hex }
             onChange={ this.handleChange }
+            onFocus={ this.handleFocus }
+            onBlur={ this.handleBlur }
           />
         </div>
       </div>)
@@ -167,6 +177,8 @@ export class ChromeFields extends React.Component {
             label="r"
             value={ this.props.rgb.r }
             onChange={ this.handleChange }
+            onFocus={ this.handleFocus }
+            onBlur={ this.handleBlur }
           />
         </div>
         <div style={ styles.field }>
@@ -175,6 +187,8 @@ export class ChromeFields extends React.Component {
             label="g"
             value={ this.props.rgb.g }
             onChange={ this.handleChange }
+            onFocus={ this.handleFocus }
+            onBlur={ this.handleBlur }
           />
         </div>
         <div style={ styles.field }>
@@ -183,6 +197,8 @@ export class ChromeFields extends React.Component {
             label="b"
             value={ this.props.rgb.b }
             onChange={ this.handleChange }
+            onFocus={ this.handleFocus }
+            onBlur={ this.handleBlur }
           />
         </div>
         <div style={ styles.alpha }>
@@ -192,6 +208,8 @@ export class ChromeFields extends React.Component {
             value={ this.props.rgb.a }
             arrowOffset={ 0.01 }
             onChange={ this.handleChange }
+            onFocus={ this.handleFocus }
+            onBlur={ this.handleBlur }
           />
         </div>
       </div>)
@@ -203,6 +221,8 @@ export class ChromeFields extends React.Component {
             label="h"
             value={ Math.round(this.props.hsl.h) }
             onChange={ this.handleChange }
+            onFocus={ this.handleFocus }
+            onBlur={ this.handleBlur }
           />
         </div>
         <div style={ styles.field }>
@@ -211,6 +231,8 @@ export class ChromeFields extends React.Component {
             label="s"
             value={ `${ Math.round(this.props.hsl.s * 100) }%` }
             onChange={ this.handleChange }
+            onFocus={ this.handleFocus }
+            onBlur={ this.handleBlur }
           />
         </div>
         <div style={ styles.field }>
@@ -219,6 +241,8 @@ export class ChromeFields extends React.Component {
             label="l"
             value={ `${ Math.round(this.props.hsl.l * 100) }%` }
             onChange={ this.handleChange }
+            onFocus={ this.handleFocus }
+            onBlur={ this.handleBlur }
           />
         </div>
         <div style={ styles.alpha }>
@@ -228,6 +252,8 @@ export class ChromeFields extends React.Component {
             value={ this.props.hsl.a }
             arrowOffset={ 0.01 }
             onChange={ this.handleChange }
+            onFocus={ this.handleFocus }
+            onBlur={ this.handleBlur }
           />
         </div>
       </div>)

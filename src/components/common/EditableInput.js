@@ -26,10 +26,15 @@ export class EditableInput extends (PureComponent || Component) {
     this.unbindEventListeners()
   }
 
-  handleBlur = () => {
+  handleFocus = (e) => {
+    this.props.onFocus && this.props.onFocus(e)
+  }
+
+  handleBlur = (e) => {
     if (this.state.blurValue) {
       this.setState({ value: this.state.blurValue, blurValue: null })
     }
+    this.props.onBlur && this.props.onBlur(e)
   }
 
   handleChange = (e) => {
@@ -140,6 +145,7 @@ export class EditableInput extends (PureComponent || Component) {
           value={ this.state.value }
           onKeyDown={ this.handleKeyDown }
           onChange={ this.handleChange }
+          onFocus={this.handleFocus}
           onBlur={ this.handleBlur }
           placeholder={ this.props.placeholder }
           spellCheck="false"
